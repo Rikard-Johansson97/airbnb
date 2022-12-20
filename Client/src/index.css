@@ -8,3 +8,6 @@
   --primary-grey: #767676;
   --primary-white: #FFFFFF;
 }
+*{
+  font-family: "roboto";
+}
