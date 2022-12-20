@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root{
+  --primary-red: #FF5A5F;
+  --primary-purple: #914669;
+  --primary-green: #008489;
+  --primary-darkGrey: #484848;
+  --primary-grey: #767676;
+  --primary-white: #FFFFFF;
+}
