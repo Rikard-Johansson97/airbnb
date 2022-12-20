@@ -11,3 +11,8 @@
 *{
   font-family: "roboto";
 }
+
+#dark-grey{
+  color: var(--primary-darkGrey);
+  font-weight: 600;
+}
