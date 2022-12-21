@@ -13,7 +13,14 @@ const HomeCard = () => {
   const [slideIndex, setSlideIndex] = useState(0);
 
   // ! NOTE: här kommer man pusha in bilderna som kommer ifrån databasen. Arrayen är flexibel och slidern annpassar sig efter hur många bilder som finns i arrayen.
-  const slides = [thumbnail1, thumbnail2, thumbnail3, thumbnail4];
+  const slides = [
+    thumbnail1,
+    thumbnail2,
+    thumbnail3,
+    thumbnail4,
+    thumbnail4,
+    thumbnail4,
+  ];
 
   // Declare a function that increments the slideIndex by 1
   const nextSlide = () => {
@@ -27,7 +34,7 @@ const HomeCard = () => {
 
   // Calculate the width of the slider container
   const sliderWidth = `${slides.length * 100}%`;
-
+  const thumbnailWidth = `${100 / slides.length}%`;
   // Calculate the translateX value for the slides based on the slideIndex
   const translateX = `-${slideIndex * (100 / slides.length)}%`;
 
@@ -58,6 +65,7 @@ const HomeCard = () => {
               className='home-thumbnail'
               alt='house'
               key={index}
+              style={{ width: thumbnailWidth }}
             />
           ))}
         </div>
