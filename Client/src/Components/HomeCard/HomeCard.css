@@ -4,15 +4,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 0 0 100%;
+    
     cursor: pointer;
     overflow: hidden;
-    margin: 10px;
 }
 /* ROOT IMAGE CONTAINER */
 .home-img-container{
     width: 100%;
     position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    aspect-ratio: 1/1;
 }
 /* THUMBNAIL CONTAINER */
 .thumbnail-container {
@@ -20,6 +22,7 @@
     flex-direction: row;
     justify-content: center;
     position: relative;
+    height: 100%;
     /* WIDTH is in jsx file */
     display: flex;
     overflow: hidden;
@@ -29,8 +32,6 @@
   /* THUMBNAIL IMAGE */
 .home-thumbnail {
     object-fit: cover;
-    width: 25%;
-    border-radius: 14px;
     /* SLIDE */
     flex: 0 0 auto;
     position: relative;
@@ -40,6 +41,7 @@
 .prev-btn, .next-btn{
     position: absolute;
     top: 50%;
+    transform: translateY(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +57,7 @@
     transform-origin: center;
 }
 .next-btn{
-    transform: rotate(180deg);
+    transform: rotate(180deg)translateY(50%);
     right: 10px;
 }
 .prev-btn{
@@ -68,13 +70,11 @@
 }
 .prev-btn:hover{
     transition: all 200ms ease-in-out;
-    transform: scale(1.1);
-    opacity: 1;
+    transform: scale(1.1)translateY(-50%);
 }
 .next-btn:hover{
     transition: all 200ms ease-in-out;
-    transform: scale(1.1)rotate(180deg);
-    opacity: 1;
+    transform: scale(1.1)rotate(180deg)translateY(50%);
 }
 
 .home-card-container:hover .prev-btn,.home-card-container:hover .next-btn{
@@ -120,7 +120,7 @@
     margin-top: 8px;
 }
 
-@media screen and (min-width: 600px) {
+/* @media screen and (min-width: 600px) {
     .home-card-container{
         flex: 0 0 46%;
     }
@@ -139,4 +139,4 @@
     .home-card-container{
         flex: 0 0 18%;
     }
-}
+} */

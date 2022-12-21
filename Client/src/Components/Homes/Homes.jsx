@@ -4,8 +4,7 @@ import "./Homes.css";
 const Homes = () => {
   return (
     <div className='Homes-container'>
-      {/* Här ska kommer en loop gå som skriver ut varje kort för det vi valt ifrån databasen */}
-      {/*  */}
+      {/* Här kommer en loop gå som skriver ut varje kort för det vi valt ifrån databasen */}
       <HomeCard />
       <HomeCard />
       <HomeCard />
