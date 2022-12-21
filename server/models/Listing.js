@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
-const userSchema = new mongoose.Schema(
+const listingSchema = new mongoose.Schema(
   {
+    _id: { type: String, required: true, unique: true },
     name: {
       type: String,
       required: true,
@@ -20,6 +21,6 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-const Apartment = mongoose.model("listingsandreviews", userSchema);
+const Listing = mongoose.model("listingsandreviews", listingSchema);
 
-module.exports = { Apartment };
+module.exports = { Listing };
