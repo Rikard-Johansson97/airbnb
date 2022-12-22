@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // ICONS
 import "./HomeCard.css";
 import reviewStar from "../../Assets/star-icon.png";
+import { Link } from "react-router-dom";
 import arrow from "../../Assets/arrowLeft.png";
 import bedIcon from "../../Assets/bed-icon.png";
 // Temp demo files for styling
@@ -49,36 +50,40 @@ const HomeCard = (props) => {
   return (
     <div className='home-card-container'>
       <div className='home-img-container'>
-        {/* Only render the next button if the slideIndex is less than the total number of slides */}
-        {slideIndex < slides.length - 1 && (
-          <button className='next-btn' onClick={nextSlide}>
-            <img className='arrow-icon' src={arrow} alt='arrow-right' />
-          </button>
-        )}
-        {/* Only render the prev button if the slideIndex is greater than 0 */}
-        {slideIndex > 0 && (
-          <button className='prev-btn' onClick={prevSlide}>
-            <img className='arrow-icon' src={arrow} alt='arrow-left' />
-          </button>
-        )}
-        <div
-          className='thumbnail-container slider'
-          style={{
-            width: sliderWidth,
-            transform: `translateX(${translateX})`,
-          }}>
-          {slides.map((slide, index) => (
-            <img
-              src={slide}
-              className='home-thumbnail'
-              alt='house'
-              key={index}
-              style={{ width: thumbnailWidth }}
-            />
-          ))}
-        </div>
+        <button
+          className='next-btn'
+          onClick={nextSlide}
+          style={{ opacity: slideIndex < slides.length - 1 ? 0.8 : 0.1 }}
+          disabled={slideIndex >= slides.length - 1}>
+          <img className='arrow-icon' src={arrow} alt='arrow-right' />
+        </button>
+        <button
+          className='prev-btn'
+          onClick={prevSlide}
+          style={{ opacity: slideIndex > 0 ? 0.8 : 0.1 }}
+          disabled={slideIndex <= 0}>
+          <img className='arrow-icon' src={arrow} alt='arrow-left' />
+        </button>
+        <Link to={`/listings/${home._id}`}>
+          <div
+            className='thumbnail-container slider'
+            style={{
+              width: sliderWidth,
+              transform: `translateX(${translateX})`,
+            }}>
+            {slides.map((slide, index) => (
+              <img
+                src={slide}
+                className='home-thumbnail'
+                alt='house'
+                key={index}
+                style={{ width: thumbnailWidth }}
+              />
+            ))}
+          </div>
+        </Link>
       </div>
-      <div className='home-text-container'>
+      <Link to={`/listings/${home._id}`} className='home-text-container'>
         <div className='title-rating-container'>
           <h3 className='home-title'>{home.address.street}</h3>
           <div className='rating-container'>
@@ -94,7 +99,7 @@ const HomeCard = (props) => {
         <p className='home-price'>
           <span id='highlight'>{home.price}.00 € EUR</span> per night
         </p>
-      </div>
+      </Link>
     </div>
   );
 };

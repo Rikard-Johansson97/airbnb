@@ -28,8 +28,10 @@ const Detail = () => {
       let dataObj = {
         img: data.images.picture_url,
         name: data.name,
-        rating: addCommas(data.review_scores.review_scores_rating),
-        reviews: data.reviews.length,
+        rating:
+          data.review_scores !== undefined
+            ? `${data.review_scores.review_scores_value}.0`
+            : ``,
       };
       setData(dataObj);
       console.log(response.data);
@@ -37,9 +39,9 @@ const Detail = () => {
     fetchData();
   }, []);
   return (
-    <div className="detail-container">
+    <div className='detail-container'>
       <div>
-        <img className="detail-img" src={data.img} alt="pic" />
+        <img className='detail-img' src={data.img} alt='pic' />
       </div>
       {data.name}
       <br />

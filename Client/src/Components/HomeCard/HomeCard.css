@@ -87,6 +87,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    text-decoration: none;
 }
 
 /* TITLE  */
@@ -131,6 +132,7 @@
     align-items: center;
     justify-content: center;
     gap: 3px;
+    color: black;
 }
 .rating-star{
     width: 12px;
