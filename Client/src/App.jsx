@@ -1,8 +1,11 @@
 import "./App.css";
 import Header from "./Components/Header/header";
 import Homes from "./Components/Homes/Homes";
+
 import { getHomes } from "./api";
 import { useState, useEffect } from "react";
+import Detail from "./Components/Detail/Detail";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   const [homes, setHomes] = useState([]);
@@ -16,10 +19,13 @@ function App() {
   }, []);
 
   return (
-    <div className='App'>
-      <Header getHomes={getHomes} setHomes={setHomes} />
-      <Homes homes={homes} />
-    </div>
+    <BrowserRouter>
+      <Header getHomes={getHomes} setHomes={setHomes}/>
+      <Routes>
+        <Route path="/" element={<Homes homes={homes}/>} />
+        <Route path="/listings/:id" element={<Detail />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
