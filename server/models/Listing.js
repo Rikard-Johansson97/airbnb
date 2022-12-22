@@ -15,6 +15,9 @@ const listingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    address: {
+      street: String,
+    },
   },
   {
     timestamps: true,

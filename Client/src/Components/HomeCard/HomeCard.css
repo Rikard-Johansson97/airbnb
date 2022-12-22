@@ -2,9 +2,8 @@
 .home-card-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    
     cursor: pointer;
     overflow: hidden;
 }
@@ -99,9 +98,33 @@
     font-weight: 600;
 }
 .home-title{
+    color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+}
+/* Home category */
+.home-category{
+    font-size: 12px;
+    margin: 5px 0;
     color: var(--primary-darkGrey);
 }
-
+/* BED COUNT */
+.bed-count{
+    padding: 3px;
+    border-radius: 5px;
+    width: 40px;
+    display: inline;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.bed-icon{
+    height: 10px;
+    margin-left: 5px;
+}
 /* RATING */
 .rating-container{
     display: flex;
@@ -111,32 +134,11 @@
 }
 .rating-star{
     width: 12px;
+    margin-left: 10px;
 }
 
 /* PRICE */
 .home-price{
-    font-size: 13px;
+    font-size: 14px;
     color: var(--primary-grey);
-    margin-top: 8px;
 }
-
-/* @media screen and (min-width: 600px) {
-    .home-card-container{
-        flex: 0 0 46%;
-    }
-}
-@media screen and (min-width: 900px) {
-    .home-card-container{
-        flex: 0 0 30%;
-    }
-}
-@media screen and (min-width: 1200px) {
-    .home-card-container{
-        flex: 0 0 23%;
-    }
-}
-@media screen and (min-width: 1600px) {
-    .home-card-container{
-        flex: 0 0 18%;
-    }
-} */

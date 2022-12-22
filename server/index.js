@@ -20,7 +20,17 @@ mongoose.connect(url, () => {
 });
 
 app.get("/listings", async (req, res) => {
-  const listings = await Listing.find({}).limit(20);
+  const city = req.query.city;
+  let listings;
+  if (city) {
+    // Find all listings in the database that contain the keyword in the city field, ignoring case
+    listings = await Listing.find({
+      "address.street": { $regex: new RegExp(city, "i") },
+    }).limit(20);
+  } else {
+    // If no city is specified, return all listings
+    listings = await Listing.find({}).limit(20);
+  }
   res.json(listings);
 });
 

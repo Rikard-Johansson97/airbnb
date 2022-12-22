@@ -12,7 +12,7 @@
   font-family: "roboto";
 }
 
-#dark-grey{
-  color: var(--primary-darkGrey);
+#highlight{
+  color: black;
   font-weight: 600;
 }
