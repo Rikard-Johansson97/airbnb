@@ -1,43 +1,51 @@
 import React, { useState } from "react";
+// ICONS
 import "./HomeCard.css";
 import reviewStar from "../../Assets/star-icon.png";
 import arrow from "../../Assets/arrowLeft.png";
+import bedIcon from "../../Assets/bed-icon.png";
 // Temp demo files for styling
 import thumbnail1 from "../../Assets/demo-home-1.jpg";
 import thumbnail2 from "../../Assets/demo-home-2.jpg";
 import thumbnail3 from "../../Assets/demo-home-3.jpg";
 import thumbnail4 from "../../Assets/demo-home-4.jpg";
 
-const HomeCard = () => {
+const HomeCard = (props) => {
+  const { home } = props;
   // Declare a state variable named "slideIndex" and set its initial value to 0
   const [slideIndex, setSlideIndex] = useState(0);
-
-  // ! NOTE: här kommer man pusha in bilderna som kommer ifrån databasen. Arrayen är flexibel och slidern annpassar sig efter hur många bilder som finns i arrayen.
   const slides = [
+    home.images.picture_url,
     thumbnail1,
     thumbnail2,
     thumbnail3,
     thumbnail4,
-    thumbnail4,
-    thumbnail4,
   ];
 
-  // Declare a function that increments the slideIndex by 1
   const nextSlide = () => {
     setSlideIndex(slideIndex + 1);
   };
 
-  // Declare a function that decrements the slideIndex by 1
   const prevSlide = () => {
     setSlideIndex(slideIndex - 1);
   };
 
-  // Calculate the width of the slider container
+  // Calculates the width of the slider container
   const sliderWidth = `${slides.length * 100}%`;
   const thumbnailWidth = `${100 / slides.length}%`;
-  // Calculate the translateX value for the slides based on the slideIndex
+  // Calculates the translateX value for the slides based on the slideIndex
   const translateX = `-${slideIndex * (100 / slides.length)}%`;
-
+  // RATING
+  const rating =
+    home.review_scores !== undefined
+      ? `${home.review_scores.review_scores_value}.0`
+      : ``;
+  // STAR
+  const star = rating ? (
+    <img src={reviewStar} className='rating-star' alt='star' />
+  ) : (
+    ""
+  );
   return (
     <div className='home-card-container'>
       <div className='home-img-container'>
@@ -70,22 +78,21 @@ const HomeCard = () => {
           ))}
         </div>
       </div>
-      {/* Other component JSX*/}
       <div className='home-text-container'>
         <div className='title-rating-container'>
-          <h3 className='home-title'>
-            Stockholm, Sweden
-            {/* Insert city */}
-            {/* Insert Country */}
-          </h3>
+          <h3 className='home-title'>{home.address.street}</h3>
           <div className='rating-container'>
-            <img src={reviewStar} className='rating-star' alt='star' />
-            <p>{/* INSERT RATING HERE */}4.5</p>
+            {star}
+            <p>{rating}</p>
           </div>
         </div>
+        <p className='home-category'>{home.property_type}</p>
+        <p className='bed-count'>
+          {home.beds}
+          <img src={bedIcon} className='bed-icon' alt='bed-icon'></img>
+        </p>
         <p className='home-price'>
-          <span id='dark-grey'>{/* INSERT PRICE HERE */}137.00 SEK</span> per
-          night
+          <span id='highlight'>{home.price}.00 € EUR</span> per night
         </p>
       </div>
     </div>

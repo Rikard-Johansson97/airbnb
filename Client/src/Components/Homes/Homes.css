@@ -1,7 +1,17 @@
 .Homes-container{
-    padding: 94px 20px 20px 20px;
+    padding: 104px 20px 20px 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
     width: 100%;
+}
+.no-result{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.no-result-img{
+    width: 80vw;
+    max-width: 500px;
 }

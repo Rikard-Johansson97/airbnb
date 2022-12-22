@@ -3,17 +3,17 @@ import "./Header.css";
 import logo from "../../Assets/airbnb-logo-icon-png-svg.png";
 import searchIcon from "../../Assets/search-icon.png";
 
-const Header = () => {
-  const searchInput = useRef();
+const Header = ({ getHomes, setHomes }) => {
+  const searchInput = useRef(null);
 
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault();
     const searchQuery = searchInput.current.value;
-    // const searchResults = /* search results */
-    // Optionally, set searchResults in state or pass to a prop
-    console.log(searchQuery);
+    // Use the getHomes function to retrieve the list of homes
+    const homes = await getHomes(searchQuery);
+    // Set the list of homes in the parent component's state
+    setHomes(homes);
   };
-
   return (
     <header className='header-container'>
       <a href='' className='logo-container' id='home-btn'>
@@ -25,7 +25,7 @@ const Header = () => {
           className='search-input'
           type='search'
           name='search'
-          placeholder='Search for City...'
+          placeholder='Search for City , state or country'
           ref={searchInput}
         />
         <button type='submit' className='search-icon-btn'>
