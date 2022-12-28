@@ -1,7 +1,102 @@
 .detail-container {
-  padding-top: 5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  cursor: pointer;
+  overflow: hidden;
 }
-.detail-img {
-  height: 100%;
+
+.detail-img-container {
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+}
+
+.detail-title {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.detail-info {
+  display: flex;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: solid 1px var(--primary-grey);
+}
+
+.detail-rating-container {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  color: black;
+  font-weight: 900;
+}
+
+.detail-star {
+  width: 16px;
+}
+
+.detail-icon {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.detail-underline {
+  border-bottom: 1px solid black;
+  font-weight: 500;
+  white-space: nowrap;
+  height: 100%;
+}
+
+.detail-rooms {
+  display: flex !important;
+  gap: 8px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.detail-house {
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid 1px var(--primary-grey);
+  padding-bottom: 1rem;
+}
+
+.detail-house-container,
+.detail-summary-container,
+.detail-amenities-container,
+.detail-header {
+  padding: 1rem;
+}
+
+.detail-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: solid 1px var(--primary-grey);
+  padding-bottom: 1rem;
+}
+
+.detail-title {
+  font-size: 1.5rem;
+  padding-bottom: 0.75rem;
+}
+
+.btn {
+  margin-top: 1rem;
+  color: var(--primary-darkGrey);
+  border-style: solid;
+  background-color: var(--primary-white);
+  border-radius: 10px;
+  padding: 13px 23px;
+  width: 100%;
+}
+
+.amenities-item {
+  list-style-type: none;
 }

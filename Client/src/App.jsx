@@ -20,10 +20,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header getHomes={getHomes} setHomes={setHomes}/>
+      <Header getHomes={getHomes} setHomes={setHomes} />
       <Routes>
-        <Route path="/" element={<Homes homes={homes}/>} />
-        <Route path="/listings/:id" element={<Detail />} />
+        <Route path='/' element={<Homes homes={homes} />} />
+        <Route path='/listings/:id' element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );

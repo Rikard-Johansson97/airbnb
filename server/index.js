@@ -35,7 +35,7 @@ app.get("/listings", async (req, res) => {
 });
 
 app.get("/listings/:id", async (req, res) => {
-  id = req.params.id;
+  const id = req.params.id;
   const listing = await Listing.findOne({ _id: id });
   res.json(listing);
 });
