@@ -100,3 +100,26 @@
 .amenities-item {
   list-style-type: none;
 }
+
+.detail-price {
+  height: 10vh;
+
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  bottom: 0px;
+  background-color: var(--primary-white);
+  border-top: 1px solid var(--primary-darkGrey);
+}
+
+.btn--price {
+  background-color: var(--primary-red);
+  border-radius: 10px;
+  color: var(--primary-white);
+  font-size: 1.25rem;
+  padding: 10px 24px;
+  border: none;
+}

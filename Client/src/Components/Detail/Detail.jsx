@@ -47,32 +47,32 @@ const Detail = () => {
       : ``;
   // STAR
   const star = rating ? (
-    <img src={reviewStar} className='detail-star' alt='star' />
+    <img src={reviewStar} className="detail-star" alt="star" />
   ) : (
     ""
   );
 
   return (
-    <div className='detail-container'>
+    <div className="detail-container">
       <div>
-        <div className='detail-img-container'>
+        <div className="detail-img-container">
           <button
-            className='next-btn'
+            className="next-btn"
             onClick={nextSlide}
             style={{ opacity: slideIndex < slides.length - 1 ? 0.8 : 0.1 }}
             disabled={slideIndex >= slides.length - 1}>
-            <img className='arrow-icon' src={arrow} alt='arrow-right' />
+            <img className="arrow-icon" src={arrow} alt="arrow-right" />
           </button>
           <button
-            className='prev-btn'
+            className="prev-btn"
             onClick={prevSlide}
             style={{ opacity: slideIndex > 0 ? 0.8 : 0.1 }}
             disabled={slideIndex <= 0}>
-            <img className='arrow-icon' src={arrow} alt='arrow-left' />
+            <img className="arrow-icon" src={arrow} alt="arrow-left" />
           </button>
           <div>
             <div
-              className='thumbnail-container slider'
+              className="thumbnail-container slider"
               style={{
                 width: sliderWidth,
                 transform: `translateX(${translateX})`,
@@ -80,8 +80,8 @@ const Detail = () => {
               {slides.map((slide, index) => (
                 <img
                   src={slide}
-                  className='home-thumbnail'
-                  alt='house'
+                  className="home-thumbnail"
+                  alt="house"
                   key={index}
                   style={{ width: thumbnailWidth }}
                 />
@@ -89,52 +89,62 @@ const Detail = () => {
             </div>
           </div>
         </div>
-        <div className='detail-header'>
-          <div className=''>
-            <h1 className='detail-title'>MICA{data.name}</h1>
-          </div>
-          <div className='detail-info'>
-            <div className='detail-rating-container'>
-              {star}
-              <p>{rating}</p>
+        <div>
+          <div className="detail-header">
+            <div className="">
+              <h1 className="detail-title">MICA{data.name}</h1>
             </div>
-            .<p className='detail-underline'> {data.reviews.length} Omdömen</p>.
-            <p className='detail-icon'>
-              <img src={House} className='detail-star' alt='house' />
-              {data.property_type}
-            </p>
-            .<p className='detail-underline'>{data.address.street}</p>
-          </div>
-        </div>
-        <div className='detail-house-container'>
-          <div className='detail-house'>
-            <h4 className='detail-title'>Rum</h4>
-            <div className='detail-rooms'>
-              <p>{data.accommodates} Gäster</p> .<p>{data.bedrooms} Sovrum</p> .
-              <p>{data.beds} Sängar</p> .
-              <p>{!data.bathrooms ? `${data.bathrooms}` : `1`} Badrum</p>
+            <div className="detail-info">
+              <div className="detail-rating-container">
+                {star}
+                <p>{rating}</p>
+              </div>
+              .
+              <p className="detail-underline"> {data.reviews.length} Omdömen</p>
+              .
+              <p className="detail-icon">
+                <img src={House} className="detail-star" alt="house" />
+                {data.property_type}
+              </p>
+              .<p className="detail-underline">{data.address.street}</p>
             </div>
           </div>
-        </div>
-        <div className='detail-summary-container'>
-          <div className='detail-summary'>{data.summary}</div>
-        </div>
-        <div className='detail-amenities-container'>
-          <div className='detail-amenities'>
-            <div>
-              <h4 className='detail-title'>Vad detta boende erbjuer</h4>
-              <ul className='amenities-item'>
-                {data.amenities
-                  ?.slice(0, displayCount)
-                  .map((amenity, index) => (
-                    <li key={index}>{amenity}</li>
-                  ))}
-              </ul>
-              {displayCount < data.amenities?.length && (
-                <button className='btn' onClick={showMore}>
-                  Show more
-                </button>
-              )}
+          <div className="detail-house-container">
+            <div className="detail-house">
+              <h4 className="detail-title">Rum</h4>
+              <div className="detail-rooms">
+                <p>{data.accommodates} Gäster</p> .<p>{data.bedrooms} Sovrum</p>{" "}
+                .<p>{data.beds} Sängar</p> .
+                <p>{!data.bathrooms ? `${data.bathrooms}` : `1`} Badrum</p>
+              </div>
+            </div>
+          </div>
+          <div className="detail-summary-container">
+            <div className="detail-summary">{data.summary}</div>
+          </div>
+          <div className="detail-amenities-container">
+            <div className="detail-amenities">
+              <div>
+                <h4 className="detail-title">Vad detta boende erbjuer</h4>
+                <ul className="amenities-item">
+                  {data.amenities
+                    ?.slice(0, displayCount)
+                    .map((amenity, index) => (
+                      <li key={index}>{amenity}</li>
+                    ))}
+                </ul>
+                {displayCount < data.amenities?.length && (
+                  <button className="btn" onClick={showMore}>
+                    Show more
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="detail-price">
+              <p>{data.price} Kr SEK natt</p>
+              <button className="btn--price">Reservera</button>
             </div>
           </div>
         </div>
