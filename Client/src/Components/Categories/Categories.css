@@ -1,0 +1,45 @@
+.wrapper {
+  padding-top: 104px;
+  margin: 0 20px 20px 20px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.category-slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  text-align: center;
+}
+.icon-wrapper {
+  cursor: pointer;
+}
+.icon {
+  width: 30px;
+  object-fit: contain;
+}
+.icon-name {
+  font-size: 10px;
+  width: 100%;
+}
+.arrows {
+  height: 36px;
+  position: absolute;
+  cursor: pointer;
+  top: 104px;
+  z-index: 99;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    86deg,
+    rgba(255, 255, 255, 1) 10%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  padding: 5px;
+}
+.arrows:first-child {
+  left: -1px;
+}
+.arrows:last-child {
+  right: -1px;
+  transform: rotate(180deg);
+}

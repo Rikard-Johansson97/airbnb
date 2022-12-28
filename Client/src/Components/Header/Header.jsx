@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import "./Header.css";
 import logo from "../../Assets/airbnb-logo-icon-png-svg.png";
 import searchIcon from "../../Assets/search-icon.png";
+import { Link } from "react-router-dom";
 
 const Header = ({ getHomes, setHomes }) => {
   const searchInput = useRef(null);
@@ -16,10 +17,10 @@ const Header = ({ getHomes, setHomes }) => {
   };
   return (
     <header className='header-container'>
-      <a href='' className='logo-container' id='home-btn'>
+      <Link to={`/`} className='logo-container' id='home-btn'>
         <img className='logo' src={logo} alt='logo' />
         <h1 className='logo-text'>airbnb</h1>
-      </a>
+      </Link>
       <form className='input-container' onSubmit={handleSearch}>
         <input
           className='search-input'
