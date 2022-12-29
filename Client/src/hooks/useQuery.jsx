@@ -4,6 +4,7 @@ export function useQuery(url) {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   useEffect(() => {
+    if (!url) return setLoading(false);
     async function fetchData() {
       setLoading(true);
       const response = await fetch(`http://localhost:3000${url}`);

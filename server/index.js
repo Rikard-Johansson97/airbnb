@@ -34,6 +34,15 @@ app.get("/listings", async (req, res) => {
   res.json(listings);
 });
 
+app.get("/listings/categories/:category", async (req, res) => {
+  const category = req.params.category;
+  if (!category) return;
+  console.log(category);
+  const listings = await Listing.find({ property_type: category }).limit(20);
+  console.log(listings[0].property_type);
+  res.json(listings);
+});
+
 app.get("/listings/:id", async (req, res) => {
   const id = req.params.id;
   const listing = await Listing.findOne({ _id: id });
