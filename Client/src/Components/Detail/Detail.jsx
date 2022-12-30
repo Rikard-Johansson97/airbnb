@@ -10,6 +10,7 @@ import thumbnail4 from "../../Assets/demo-home-4.jpg";
 import House from "../../Assets/house.png";
 import arrow from "../../Assets/arrowLeft.png";
 import Reviews from "./Reviews/Reviews";
+import Maps from "./Maps/Maps";
 
 const Detail = () => {
   let { id } = useParams();
@@ -147,6 +148,11 @@ const Detail = () => {
       {!data.reviews.length > 0 ? null : (
         <Reviews data={data} loading={loading}></Reviews>
       )}
+      <Maps
+        lng={data.address.location.coordinates[0]}
+        lat={data.address.location.coordinates[1]}
+        data={data}
+      />
     </>
   );
 };
