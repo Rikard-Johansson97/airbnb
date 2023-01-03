@@ -4,20 +4,18 @@ import logo from "../../Assets/airbnb-logo-icon-png-svg.png";
 import searchIcon from "../../Assets/search-icon.png";
 import { Link } from "react-router-dom";
 
-const Header = ({ getHomes, setHomes }) => {
+const Header = (props) => {
   const searchInput = useRef(null);
 
-  const handleSearch = async (event) => {
+  const handleSearch = (event) => {
     event.preventDefault();
     const searchQuery = searchInput.current.value;
-    // Use the getHomes function to retrieve the list of homes
-    const homes = await getHomes(searchQuery);
-    // Set the list of homes in the parent component's state
-    setHomes(homes);
+    props.onSearch(searchQuery); // Call the onSearch prop function and pass the search query
   };
+
   return (
     <header className='header-container'>
-      <Link to={`/`} className='logo-container' id='home-btn'>
+      <Link to='/' className='logo-container' id='home-btn'>
         <img className='logo' src={logo} alt='logo' />
         <h1 className='logo-text'>airbnb</h1>
       </Link>

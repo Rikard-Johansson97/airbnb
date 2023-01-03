@@ -1,10 +1,14 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./Categories.css";
 import icons from "./index";
 import arrows from "../../Assets/arrowLeft.png";
 
-const Categories = () => {
+const Categories = (props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleClick = (category) => {
+    props.onCategoryChange(category);
+  };
 
   const handleNextSlide = () => {
     if (
@@ -39,7 +43,11 @@ const Categories = () => {
       />
       <div className='category-slider' style={sliderStyle}>
         {icons.map((icon, index) => (
-          <div className='icon-wrapper' key={index} style={{ width: "100px" }}>
+          <div
+            onClick={() => handleClick(icon.name)}
+            className='icon-wrapper'
+            key={index}
+            style={{ width: "100px" }}>
             <img
               src={icon.url}
               alt={icon.name}

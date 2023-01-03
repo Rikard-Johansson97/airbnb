@@ -1,28 +1,22 @@
 import "./App.css";
 import Header from "./Components/Header/header";
 import Homes from "./Components/Homes/Homes";
-
-import { getHomes } from "./api";
-import { useState, useEffect } from "react";
 import Detail from "./Components/Detail/Detail";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
-  const [homes, setHomes] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await getHomes();
-      setHomes(data);
-    }
-    fetchData();
-  }, []);
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
   return (
     <BrowserRouter>
-      <Header getHomes={getHomes} setHomes={setHomes} />
+      <Header onSearch={handleSearch} />
       <Routes>
-        <Route path="/" element={<Homes homes={homes} />} />
+        <Route path="/" element={<Homes searchQuery={searchQuery} />} />
         <Route path="/listings/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>

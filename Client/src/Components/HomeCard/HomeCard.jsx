@@ -12,6 +12,15 @@ import thumbnail3 from "../../Assets/demo-home-3.jpg";
 import thumbnail4 from "../../Assets/demo-home-4.jpg";
 
 const HomeCard = (props) => {
+  const { loading } = props;
+  if (loading) {
+    console.log(loading);
+    return (
+      <div className='home-card-container loading'>
+        <div className='home-img-container loading'></div>
+      </div>
+    );
+  }
   const { home } = props;
   // Declare a state variable named "slideIndex" and set its initial value to 0
   const [slideIndex, setSlideIndex] = useState(0);
@@ -97,7 +106,7 @@ const HomeCard = (props) => {
           <img src={bedIcon} className='bed-icon' alt='bed-icon'></img>
         </p>
         <p className='home-price'>
-          <span id='highlight'>{home.price}.00 € EUR</span> per night
+          <span id='highlight'>{home.price}.00 kr SEK</span> per natt
         </p>
       </Link>
     </div>

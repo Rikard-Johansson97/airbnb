@@ -18,6 +18,9 @@ const listingSchema = new mongoose.Schema(
     address: {
       street: String,
     },
+    property_type: {
+      String,
+    },
   },
   {
     timestamps: true,
