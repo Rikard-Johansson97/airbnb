@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Detail.css";
 import { useParams } from "react-router-dom";
 import { useQuery } from "../../hooks/useQuery";
@@ -9,13 +9,17 @@ import thumbnail3 from "../../Assets/demo-home-3.jpg";
 import thumbnail4 from "../../Assets/demo-home-4.jpg";
 import House from "../../Assets/house.png";
 import arrow from "../../Assets/arrowLeft.png";
+import { useMedia } from "../../hooks/useMedia";
 
 const Detail = () => {
   let { id } = useParams();
   const [data, loading] = useQuery(`/listings/${id}`);
   const [displayCount, setDisplayCount] = useState(5);
   const [slideIndex, setSlideIndex] = useState(0);
+  const isLarge = useMedia("(min-width: 800px)");
+
   if (loading) return <div>Loading...</div>;
+
   const slides = [
     data.images.picture_url,
     thumbnail1,
@@ -52,9 +56,10 @@ const Detail = () => {
     ""
   );
 
+  console.log(data);
   return (
     <div className="detail-container">
-      <div>
+      <div className="detail-wrap">
         <div className="detail-img-container">
           <button
             className="next-btn"
@@ -72,7 +77,7 @@ const Detail = () => {
           </button>
           <div>
             <div
-              className="thumbnail-container slider"
+              className="thumbnail-container slider margin"
               style={{
                 width: sliderWidth,
                 transform: `translateX(${translateX})`,
@@ -89,62 +94,102 @@ const Detail = () => {
             </div>
           </div>
         </div>
-        <div>
-          <div className="detail-header">
-            <div className="">
-              <h1 className="detail-title">MICA{data.name}</h1>
-            </div>
-            <div className="detail-info">
-              <div className="detail-rating-container">
-                {star}
-                <p>{rating}</p>
-              </div>
-              .
-              <p className="detail-underline"> {data.reviews.length} Omdömen</p>
-              .
-              <p className="detail-icon">
-                <img src={House} className="detail-star" alt="house" />
-                {data.property_type}
-              </p>
-              .<p className="detail-underline">{data.address.street}</p>
-            </div>
-          </div>
-          <div className="detail-house-container">
-            <div className="detail-house">
-              <h4 className="detail-title">Rum</h4>
-              <div className="detail-rooms">
-                <p>{data.accommodates} Gäster</p> .<p>{data.bedrooms} Sovrum</p>{" "}
-                .<p>{data.beds} Sängar</p> .
-                <p>{!data.bathrooms ? `${data.bathrooms}` : `1`} Badrum</p>
-              </div>
-            </div>
-          </div>
-          <div className="detail-summary-container">
-            <div className="detail-summary">{data.summary}</div>
-          </div>
-          <div className="detail-amenities-container">
-            <div className="detail-amenities">
-              <div>
-                <h4 className="detail-title">Vad detta boende erbjuer</h4>
-                <ul className="amenities-item">
-                  {data.amenities
-                    ?.slice(0, displayCount)
-                    .map((amenity, index) => (
-                      <li key={index}>{amenity}</li>
-                    ))}
-                </ul>
-                {displayCount < data.amenities?.length && (
-                  <button className="btn" onClick={showMore}>
-                    Show more
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
+        <div className="detail-devider">
           <div>
-            <div className="detail-price">
-              <p>{data.price} Kr SEK natt</p>
-              <button className="btn--price">Reservera</button>
+            <div className="detail-header">
+              <div className="">
+                <h1 className="detail-title">MICA{data.name}</h1>
+              </div>
+              <div className="detail-info">
+                <div className="detail-rating-container">
+                  {star}
+                  <p>{rating}</p>
+                </div>
+                .
+                <p className="detail-underline">
+                  {data.reviews.length} Omdömen
+                </p>
+                .
+                <p className="detail-icon">
+                  <img src={House} className="detail-star" alt="house" />
+                  {data.property_type}
+                </p>
+                .<p className="detail-underline">{data.address.street}</p>
+              </div>
+            </div>
+            <div className="detail-house-container">
+              <div className="detail-house">
+                <h4 className="detail-title">Rum</h4>
+                <div className="detail-rooms">
+                  <p>{data.accommodates} Gäster</p> .
+                  <p>{data.bedrooms} Sovrum</p> .<p>{data.beds} Sängar</p> .
+                  <p>{!data.bathrooms ? `${data.bathrooms}` : `1`} Badrum</p>
+                </div>
+              </div>
+            </div>
+            <div className="detail-summary-container">
+              <div className="detail-summary">{data.summary}</div>
+            </div>
+            <div className="detail-amenities-container">
+              <div className="detail-amenities">
+                <div>
+                  <h4 className="detail-title">Vad detta boende erbjuer</h4>
+                  <ul className="amenities-item">
+                    {data.amenities
+                      ?.slice(0, displayCount)
+                      .map((amenity, index) => (
+                        <li key={index}>{amenity}</li>
+                      ))}
+                  </ul>
+                  {displayCount < data.amenities?.length && (
+                    <button className="btn" onClick={showMore}>
+                      Show more
+                    </button>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="detail-price-container">
+            <div>
+              {isLarge ? (
+                <div className="detail-price">
+                  <div>
+                    <div className="detail-price-header">
+                      <p className="detail-header-title">
+                        {data.price} Kr SEK natt
+                      </p>
+                      <div className="detail-rating-container">
+                        {star}
+                        <p>{rating}</p>
+                      </div>
+                      <p className="detail-underline">
+                        {data.reviews.length} Omdömen
+                      </p>
+                    </div>
+                    <button className="btn--price large">Reservera</button>
+                    <div className="detail-price-footer">
+                      <div>
+                        <p className="detail-footer-text">
+                          {data.price} X 5 nätter
+                        </p>
+                        <p className="detail-footer-text">Städavgift</p>
+                      </div>
+                      <div>
+                        <p>{data.price * 5} kr SEK</p>
+                        <p>{data.cleaning_fee.$numberDecimal}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="detail-price">
+                  <p>{data.price} Kr SEK natt</p>
+
+                  <button className="btn--price">Reservera</button>
+                </div>
+              )}
             </div>
           </div>
         </div>
