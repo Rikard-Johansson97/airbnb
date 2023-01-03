@@ -55,7 +55,7 @@ const Detail = () => {
   const star = rating ? (
     <img src={reviewStar} className="detail-star" alt="star" />
   ) : (
-    ""
+    " "
   );
 
   console.log(data);
