@@ -16,8 +16,8 @@ function App() {
     <BrowserRouter>
       <Header onSearch={handleSearch} />
       <Routes>
-        <Route path='/' element={<Homes searchQuery={searchQuery} />} />
-        <Route path='/listings/:id' element={<Detail />} />
+        <Route path="/" element={<Homes searchQuery={searchQuery} />} />
+        <Route path="/listings/:id" element={<Detail />} />
       </Routes>
     </BrowserRouter>
   );
