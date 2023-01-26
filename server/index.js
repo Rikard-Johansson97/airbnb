@@ -4,6 +4,7 @@ const cors = require("Cors");
 const app = express();
 const { Listing } = require("./models/Listing");
 const mongoose = require("mongoose");
+require("dotenv").config();
 mongoose.set("strictQuery", true);
 
 app.use(
@@ -13,8 +14,7 @@ app.use(
 );
 app.use(bodyParser.json());
 
-const url =
-  "mongodb+srv://airbnb:airbnb@cluster0.ihesg3d.mongodb.net/sample_airbnb?retryWrites=true&w=majority";
+const url = process.env.DB_URI;
 mongoose.connect(url, () => {
   console.log("connected");
 });
@@ -49,4 +49,4 @@ app.get("/listings/:id", async (req, res) => {
   res.json(listing);
 });
 
-app.listen(3000);
+app.listen(process.env.PORT);

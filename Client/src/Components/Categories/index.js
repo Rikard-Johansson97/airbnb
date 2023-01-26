@@ -30,7 +30,7 @@ const icons = [
   { name: "Condominium", url: condominium },
   { name: "Cottage", url: cottage },
   { name: "Farm stay", url: farmStay },
-  { name: "GuestHouse", url: guestHouse },
+  { name: "Guesthouse", url: guestHouse },
   { name: "Guest suite", url: guestSuite },
   { name: "Hostel", url: hostel },
   { name: "House", url: house },
