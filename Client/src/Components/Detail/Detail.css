@@ -71,18 +71,25 @@
 .detail-summary-container,
 .detail-amenities-container,
 .detail-header {
-  padding: 1rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.detail-amenities-container {
+  padding-bottom: 1rem;
 }
 
 .detail-summary {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  padding-top: 1rem;
   border-bottom: solid 1px var(--primary-grey);
   padding-bottom: 1rem;
 }
 
 .detail-title {
+  padding-top: 1rem;
   font-size: 1.5rem;
   padding-bottom: 0.75rem;
 }
@@ -124,6 +131,13 @@
 }
 
 @media screen and (min-width: 800px) {
+  .detail-house-container,
+  .detail-summary-container,
+  .detail-amenities-container,
+  .detail-header {
+    padding-right: 1rem;
+    padding-left: 0rem;
+  }
   .detail-amenities-container,
   .detail-house-container,
   .detail-summary-container {
@@ -186,6 +200,10 @@
 
   .large {
     width: 100%;
+  }
+
+  .reviews-wrapper {
+    padding: 2rem;
   }
 }
 

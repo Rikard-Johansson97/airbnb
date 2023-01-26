@@ -78,6 +78,7 @@ const Detail = () => {
               </div>
             </div>
           </div>
+
           <div className="detail-devider">
             <Information data={data} />
             <Price data={data} />
