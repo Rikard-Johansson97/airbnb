@@ -7,7 +7,7 @@ export function useQuery(url) {
     if (!url) return setLoading(false);
     async function fetchData() {
       setLoading(true);
-      const response = await fetch(`https://airbnb-eta-inky.vercel.app/${url}`);
+      const response = await fetch(`${import.meta.env.VITE_SERVER_URL}${url}`);
       const data = await response.json();
       setData(data);
       setLoading(false);
