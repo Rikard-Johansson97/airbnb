@@ -10,44 +10,42 @@ const Price = ({ data }) => {
       : ``;
   // STAR
   const star = rating ? (
-    <img src={reviewStar} className="detail-star" alt="star" />
+    <img src={reviewStar} className='detail-star' alt='star' />
   ) : (
     " "
   );
   return (
-    <div className="detail-price-container">
+    <div className='detail-price-container'>
       <div>
         {isLarge ? (
-          <div className="detail-price">
+          <div className='detail-price'>
             <div>
-              <div className="detail-price-header">
-                <p className="detail-header-title">{data.price} Kr SEK natt</p>
-                <div className="detail-rating-container">
+              <div className='detail-price-header'>
+                <p className='detail-header-title'>{data.price} Kr SEK natt</p>
+                <div className='detail-rating-container'>
                   {star}
                   <p>{rating}</p>
                 </div>
-                <p className="detail-underline">
+                <p className='detail-underline'>
                   {data.reviews.length} Omdömen
                 </p>
               </div>
-              <button className="btn--price large">Reservera</button>
-              <div className="detail-price-footer">
+              <button className='btn--price large'>Reservera</button>
+              <div className='detail-price-footer'>
                 <div>
-                  <p className="detail-footer-text">{data.price} X 5 nätter</p>
-                  <p className="detail-footer-text">Städavgift</p>
+                  <p className='detail-footer-text'>{data.price} X 5 nätter</p>
                 </div>
                 <div>
                   <p>{data.price * 5} kr SEK</p>
-                  <p>{data.cleaning_fee.$numberDecimal}</p>
                 </div>
               </div>
             </div>
           </div>
         ) : (
-          <div className="detail-price">
+          <div className='detail-price'>
             <p>{data.price} Kr SEK natt</p>
 
-            <button className="btn--price">Reservera</button>
+            <button className='btn--price'>Reservera</button>
           </div>
         )}
       </div>

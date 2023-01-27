@@ -42,26 +42,26 @@ const Detail = () => {
 
   return (
     <>
-      <div className="detail-container">
-        <div className="detail-wrap">
-          <div className="detail-img-container">
+      <div className='detail-container'>
+        <div className='detail-wrap'>
+          <div className='detail-img-container'>
             <button
-              className="next-btn"
+              className='next-btn'
               onClick={nextSlide}
               style={{ opacity: slideIndex < slides.length - 1 ? 0.8 : 0.1 }}
               disabled={slideIndex >= slides.length - 1}>
-              <img className="arrow-icon" src={arrow} alt="arrow-right" />
+              <img className='arrow-icon' src={arrow} alt='arrow-right' />
             </button>
             <button
-              className="prev-btn"
+              className='prev-btn'
               onClick={prevSlide}
               style={{ opacity: slideIndex > 0 ? 0.8 : 0.1 }}
               disabled={slideIndex <= 0}>
-              <img className="arrow-icon" src={arrow} alt="arrow-left" />
+              <img className='arrow-icon' src={arrow} alt='arrow-left' />
             </button>
             <div>
               <div
-                className="thumbnail-container slider margin"
+                className='thumbnail-container slider margin'
                 style={{
                   width: sliderWidth,
                   transform: `translateX(${translateX})`,
@@ -69,8 +69,8 @@ const Detail = () => {
                 {slides.map((slide, index) => (
                   <img
                     src={slide}
-                    className="home-thumbnail"
-                    alt="house"
+                    className='home-thumbnail'
+                    alt='house'
                     key={index}
                     style={{ width: thumbnailWidth }}
                   />
@@ -79,13 +79,13 @@ const Detail = () => {
             </div>
           </div>
 
-          <div className="detail-devider">
+          <div className='detail-devider'>
             <Information data={data} />
             <Price data={data} />
           </div>
         </div>
       </div>
-      {!data.reviews.length > 0 ? null : (
+      {!data?.reviews.length > 0 ? null : (
         <Reviews data={data} loading={loading}></Reviews>
       )}
       <Maps
